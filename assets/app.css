@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@source "src/**/*.rs";
+
+:root {
+    button {
+        @apply cursor-pointer;
+    }
+}
+
+@theme {
+    /* Base theme colors */
+    --color-primary: #113946;
+    --color-primary-hover: #0d2f38;
+
+    --color-secondary: #BCA37F;
+    --color-secondary-hover: #a88d6b;
+
+    --color-bg: #FFF2D8;
+    --color-bg-secondary: #EAD7BB;
+
+    --color-text: #113946;
+    --color-muted: #BCA37F;
+}
+
+@layer components {
+    .btn {
+        @apply cursor-pointer inline-flex items-center justify-center px-4 py-2 font-medium transition-colors duration-200;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-white hover:bg-primary-hover;
+    }
+
+    .btn-secondary {
+        @apply bg-secondary text-white hover:bg-secondary-hover;
+    }
+
+    .btn-danger {
+        @apply bg-red-500 text-white hover:opacity-90;
+    }
+
+    .btn-outline {
+        @apply border border-primary text-primary hover:bg-primary hover:text-white;
+    }
+}
