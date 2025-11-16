@@ -21,7 +21,7 @@ fn App() -> Html {
         <div>
             <Button label="Counter" onclick={onclick} />
                 <Carousel
-                    auto_play={true}
+                    auto_play={false}
                     auto_play_interval={Duration::from_secs(5)}
                     show_controls={true}
                     show_indicators={true}

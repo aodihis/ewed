@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
 gloo = "0.11.0"
+wasm-bindgen = "0.2.105"
 
 [tools]
 tailwindcss = "3.3.5"

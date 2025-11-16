@@ -42,4 +42,24 @@
     .btn-outline {
         @apply border border-primary text-primary hover:bg-primary hover:text-white;
     }
+
+    .carousel-content {
+        @apply flex transition-transform duration-700 ease-in-out;
+    }
+
+    .carousel-content .carousel-item:not(.active):not(.next):not(.prev) {
+        @apply hidden;
+    }
+
+    .carousel-content .carousel-item {
+        @apply w-full flex-shrink-0;
+    }
+
+    .carousel-content .carousel-item.prev {
+        @apply order-1;
+    }
+
+    .carousel-content .carousel-item.active {
+        @apply order-2;
+    }
 }

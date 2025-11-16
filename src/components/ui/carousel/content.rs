@@ -1,8 +1,9 @@
-use yew::{function_component, html, ChildrenWithProps, Html, Properties};
+use yew::{classes, function_component, html, ChildrenWithProps, Html, Properties};
 use crate::components::ui::carousel::CarouselItem;
 
 #[derive(Properties, PartialEq)]
 pub struct CarouselContentProps {
+    pub prev: usize,
     pub current: usize,
     pub children: ChildrenWithProps<CarouselItem>,
 }
@@ -11,11 +12,22 @@ pub struct CarouselContentProps {
 pub fn carousel_content(props: &CarouselContentProps) -> Html {
     html! {
         <div
-            class="flex transition-transform duration-700 ease-in-out"
-            style={format!("transform: translateX(-{}%);", props.current * 100)}
+            class="carousel-content"
+            style={format!("transform: translateX(-{}%);", 100)}
         >
-            { for props.children.iter().enumerate().map(|(_, child)| html! {
-                <div class="w-full flex-shrink-0">{ child }</div>
+            { for props.children.iter().enumerate().map(|(idx, child)| {
+                let pos_class = if idx == props.current {
+                    "active"
+                } else if idx == props.prev {
+                    "prev"
+                } else {
+                    ""
+                };
+
+                html! {
+                    <div class={classes!("carousel-item", pos_class)}>{ child }</div>
+                    // <div class="carousel-item">{ child }</div>
+                }
             })}
         </div>
     }

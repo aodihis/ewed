@@ -25,6 +25,7 @@ pub struct CarouselProps {
 
 
 pub struct Carousel {
+    prev: usize,
     current: usize,
     interval: Option<Interval>,
 }
@@ -52,6 +53,7 @@ impl Component for Carousel {
 
     fn create(ctx: &Context<Self>,) -> Self {
         let mut carousel = Self {
+            prev: ctx.props().children.len() - 1,
             current: ctx.props().start_index,
             interval: None,
         };
@@ -70,6 +72,7 @@ impl Component for Carousel {
         if ctx.props().auto_play {
             self.interval = Some(Self::setup_timer(ctx));
         }
+        self.prev = self.current;
 
         match msg {
             Msg::Next => {
@@ -101,7 +104,7 @@ impl Component for Carousel {
                 ctx.props().class.clone().unwrap_or_default()
             )}>
 
-                <CarouselContent current={self.current}>
+                <CarouselContent prev={self.prev} current={self.current}>
                     {{child}}
                 </CarouselContent>
 
