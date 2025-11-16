@@ -25,7 +25,7 @@ fn App() -> Html {
                     auto_play_interval={Duration::from_secs(5)}
                     show_controls={true}
                     show_indicators={true}
-                    class={Some("w-full h-64")}
+                    class={Some("w-78 h-64")}
             >
                 <CarouselItem>
                     <img class={Some("w-full h-64 object-cover")} src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="Slide" />
